@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear cuenta | NOXIRA GRC</title>
+  <meta name="theme-color" content="#08090c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="registro.css">
+  <script src="registro.js" defer></script>
+</head>
+<body>
+  <div class="auth-glow" aria-hidden="true"></div>
+
+  <main class="auth">
+
+    <!-- Columna izquierda: contexto -->
+    <section class="auth-aside">
+      <a class="brand" href="index.html" aria-label="NOXIRA GRC, volver al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">NOXIRA <span>GRC</span></span>
+      </a>
+
+      <div class="aside-copy">
+        <h1>Empieza a ordenar tu cumplimiento</h1>
+        <p>Crea tu cuenta para acceder a la plataforma y seguir el avance de tus controles y riesgos.</p>
+        <ul class="aside-list">
+          <li>Acceso al panel de cumplimiento</li>
+          <li>Registro de riesgos y evidencias</li>
+          <li>Seguimiento de auditorías</li>
+        </ul>
+      </div>
+
+      <a class="back-link" href="index.html">Volver al sitio</a>
+    </section>
+
+    <!-- Columna derecha: formulario -->
+    <section class="auth-card" aria-labelledby="registro-title">
+      <h2 id="registro-title">Crear cuenta</h2>
+      <p class="card-sub">Solo toma un minuto.</p>
+
+      <form id="registro-form" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          <span class="field-error" id="nombre-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="email">Correo de trabajo</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          <span class="field-error" id="email-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="empresa">Organización <span class="optional">(opcional)</span></label>
+          <input id="empresa" name="empresa" type="text" autocomplete="organization">
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <div class="input-wrap">
+            <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" aria-describedby="password-hint" required>
+            <button class="toggle-pass" id="toggle-pass" type="button" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
+          </div>
+          <p class="field-hint" id="password-hint">Mínimo 8 caracteres, con letras y números.</p>
+          <div class="strength" id="strength" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </div>
+          <span class="strength-label" id="strength-label" aria-live="polite"></span>
+          <span class="field-error" id="password-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="password2">Repite la contraseña</label>
+          <input id="password2" name="password2" type="password" autocomplete="new-password" required>
+          <span class="field-error" id="password2-error" role="alert"></span>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="terminos" name="terminos" required>
+          <span>Acepto los <a class="text-link" href="#">términos de uso</a> y la <a class="text-link" href="#">política de privacidad</a></span>
+        </label>
+        <span class="field-error" id="terminos-error" role="alert"></span>
+
+        <button class="btn-submit" id="submit-btn" type="submit">
+          <span class="btn-label">Crear cuenta</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="card-switch">¿Ya tienes cuenta? <a class="text-link" href="login.html">Iniciar sesión</a></p>
+    </section>
+
+  </main>
+</body>
+</html>

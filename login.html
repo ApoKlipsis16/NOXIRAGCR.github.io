@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión | NOXIRA GRC</title>
+  <meta name="theme-color" content="#08090c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+  <script src="login.js" defer></script>
+</head>
+<body>
+  <div class="auth-glow" aria-hidden="true"></div>
+
+  <main class="auth">
+
+    <!-- Columna izquierda: contexto -->
+    <section class="auth-aside">
+      <a class="brand" href="index.html" aria-label="NOXIRA GRC, volver al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">NOXIRA <span>GRC</span></span>
+      </a>
+
+      <div class="aside-copy">
+        <h1>Tu cumplimiento, en un solo lugar</h1>
+        <p>Entra para ver el estado de tus controles, riesgos abiertos y próximas auditorías.</p>
+        <ul class="aside-list">
+          <li>Avance por norma y por área</li>
+          <li>Registro de riesgos siempre actualizado</li>
+          <li>Evidencias listas para auditoría</li>
+        </ul>
+      </div>
+
+      <a class="back-link" href="index.html">Volver al sitio</a>
+    </section>
+
+    <!-- Columna derecha: formulario -->
+    <section class="auth-card" aria-labelledby="login-title">
+      <h2 id="login-title">Iniciar sesión</h2>
+      <p class="card-sub">Usa el correo con el que te registraste.</p>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          <span class="field-error" id="email-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <div class="label-row">
+            <label for="password">Contraseña</label>
+            <a class="text-link" href="#" id="forgot-link">¿Olvidaste tu contraseña?</a>
+          </div>
+          <div class="input-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required>
+            <button class="toggle-pass" id="toggle-pass" type="button" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
+          </div>
+          <span class="field-error" id="password-error" role="alert"></span>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="remember" name="remember">
+          <span>Recordar mi correo en este equipo</span>
+        </label>
+
+        <button class="btn-submit" id="submit-btn" type="submit">
+          <span class="btn-label">Iniciar sesión</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="card-switch">¿Aún no tienes cuenta? <a class="text-link" href="create.html">Crear cuenta</a></p>
+    </section>
+
+  </main>
+</body>
+</html>

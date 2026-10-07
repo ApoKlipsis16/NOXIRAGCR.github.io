@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | NOXIRA GRC</title>
+  <meta name="description" content="Escríbenos para solicitar un diagnóstico de gobierno, riesgo y cumplimiento con NOXIRA GRC.">
+  <meta name="theme-color" content="#08090c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contacto.css">
+  <script src="contacto.js" defer></script>
+</head>
+<body>
+  <div class="auth-glow" aria-hidden="true"></div>
+
+  <main class="auth">
+
+    <!-- Columna izquierda: información de contacto -->
+    <section class="auth-aside">
+      <a class="brand" href="index.html" aria-label="NOXIRA GRC, volver al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">NOXIRA <span>GRC</span></span>
+      </a>
+
+      <div class="aside-copy">
+        <h1>Cuéntanos qué necesitas</h1>
+        <p>Escríbenos y te respondemos en un día hábil con una propuesta de siguiente paso.</p>
+
+        <dl class="contact-info">
+          <div>
+            <dt>Correo</dt>
+            <dd><a class="text-link" href="mailto:contacto@noxiragrc.com">contacto@noxiragrc.com</a></dd>
+          </div>
+          <div>
+            <dt>Horario</dt>
+            <dd>Lunes a viernes, de 9:00 a 18:00</dd>
+          </div>
+          <div>
+            <dt>Tiempo de respuesta</dt>
+            <dd>Un día hábil</dd>
+          </div>
+        </dl>
+
+        <h2 class="aside-subtitle">Qué pasa después de escribirnos</h2>
+        <ol class="aside-steps">
+          <li>Revisamos tu consulta y el contexto de tu organización.</li>
+          <li>Te contactamos para aclarar objetivos y alcance.</li>
+          <li>Te enviamos una propuesta de diagnóstico, sin compromiso.</li>
+        </ol>
+      </div>
+
+      <a class="back-link" href="index.html">Volver al sitio</a>
+    </section>
+
+    <!-- Columna derecha: formulario -->
+    <section class="auth-card" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Enviar consulta</h2>
+      <p class="card-sub">Los campos marcados con * son obligatorios.</p>
+
+      <form   id="contacto-form"
+              action="solicitud-enviada.html"
+              method="get"
+              >
+        <div class="field">
+          <label for="nombre">Nombre completo *</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          <span class="field-error" id="nombre-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="email">Correo de trabajo *</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          <span class="field-error" id="email-error" role="alert"></span>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="empresa">Organización</label>
+            <input id="empresa" name="empresa" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono <span class="optional">(opcional)</span></label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel">
+            <span class="field-error" id="telefono-error" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="interes">¿Qué te interesa? *</label>
+          <select id="interes" name="interes" required>
+            <option value="">Selecciona una opción</option>
+            <option>Gobierno de seguridad</option>
+            <option>Gestión de riesgos</option>
+            <option>Cumplimiento normativo</option>
+            <option>Preparación de auditorías</option>
+            <option>Riesgo de terceros</option>
+            <option>Concientización y cultura</option>
+            <option>Otro</option>
+          </select>
+          <span class="field-error" id="interes-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="tamano">Tamaño de la organización</label>
+          <select id="tamano" name="tamano">
+            <option value="">Prefiero no indicarlo</option>
+            <option>1 a 50 personas</option>
+            <option>51 a 250 personas</option>
+            <option>251 a 1000 personas</option>
+            <option>Más de 1000 personas</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="5" maxlength="1000" aria-describedby="mensaje-count" required></textarea>
+          <p class="field-hint" id="mensaje-count">0 de 1000 caracteres</p>
+          <span class="field-error" id="mensaje-error" role="alert"></span>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="privacidad" name="privacidad" required>
+          <span>Acepto que NOXIRA GRC use mis datos para responder esta consulta, según la <a class="text-link" href="#">política de privacidad</a></span>
+        </label>
+        <span class="field-error" id="privacidad-error" role="alert"></span>
+
+        <button class="btn-submit"
+                id="submit-btn"
+                type="submit"
+              >
+            <span class="btn-label">
+    Enviar consulta
+  </span>
+
+  <span
+    class="spinner"
+    aria-hidden="true"
+  ></span>
+        </button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="card-switch">¿Ya tienes cuenta? <a class="text-link" href="login.html">Iniciar sesión</a></p>
+    </section>
+
+  </main>
+</body>
+</html>

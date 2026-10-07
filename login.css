@@ -1,0 +1,1135 @@
+/* =========================================================
+   NOXIRA GRC — LOGIN
+   Estilo: Linear + dinamismo Adobe
+   ========================================================= */
+
+
+/* =========================
+   VARIABLES
+   ========================= */
+
+:root {
+  --bg: #08090c;
+  --bg-soft: #0d0f14;
+
+  --panel: rgba(17, 20, 27, 0.82);
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  --text: #f7f7f8;
+  --text-soft: #a7acb8;
+  --text-muted: #6d727d;
+
+  --accent: #7c6cff;
+  --accent-2: #4f8cff;
+
+  --danger: #ff6b76;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --transition: 220ms cubic-bezier(.2, .8, .2, 1);
+}
+
+
+/* =========================
+   RESET
+   ========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: "Inter", sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      rgba(103, 82, 255, 0.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(70, 130, 255, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #08090c,
+      #090b10
+    );
+
+  overflow-x: hidden;
+}
+
+
+/* cuadrícula sutil de fondo */
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.35),
+      transparent 80%
+    );
+
+  z-index: -2;
+}
+
+
+/* =========================
+   GLOW
+   ========================= */
+
+.auth-glow {
+  position: fixed;
+
+  width: 650px;
+  height: 650px;
+
+  top: -240px;
+  right: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 108, 255, 0.20) 0%,
+      rgba(79, 140, 255, 0.08) 35%,
+      transparent 70%
+    );
+
+  filter: blur(55px);
+
+  pointer-events: none;
+
+  animation: glowMove 9s ease-in-out infinite alternate;
+
+  z-index: -1;
+}
+
+@keyframes glowMove {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-50px, 60px, 0) scale(1.08);
+  }
+}
+
+
+/* =========================
+   LAYOUT PRINCIPAL
+   ========================= */
+
+.auth {
+  width: min(1180px, calc(100% - 48px));
+  min-height: 100vh;
+
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+
+  align-items: center;
+
+  gap: 90px;
+
+  padding: 60px 0;
+}
+
+
+/* =========================================================
+   COLUMNA IZQUIERDA
+   ========================================================= */
+
+.auth-aside {
+  min-height: 620px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================
+   BRAND
+   ========================= */
+
+.brand {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  text-decoration: none;
+
+  color: var(--text);
+
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+.brand:hover {
+  transform: translateY(-2px);
+}
+
+.brand-mark {
+  position: relative;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #b3adff 30%,
+      #786cff 60%,
+      #4f8cff 100%
+    );
+
+  box-shadow:
+    0 0 25px rgba(124, 108, 255, .25);
+
+  overflow: hidden;
+}
+
+.brand-mark::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 8px;
+
+  border: 2px solid #08090c;
+
+  border-radius: 4px;
+
+  transform: rotate(45deg);
+}
+
+.brand-name {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: .06em;
+}
+
+.brand-name span {
+  color: #9890ff;
+}
+
+
+/* =========================
+   COPY IZQUIERDO
+   ========================= */
+
+.aside-copy {
+  max-width: 590px;
+
+  margin: auto 0;
+
+  animation: asideIn 700ms ease both;
+}
+
+@keyframes asideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.aside-copy h1 {
+  max-width: 600px;
+
+  margin-bottom: 26px;
+
+  font-size: clamp(3.3rem, 5vw, 5.5rem);
+
+  line-height: .96;
+
+  letter-spacing: -.065em;
+
+  font-weight: 600;
+
+  background:
+    linear-gradient(
+      125deg,
+      #ffffff 0%,
+      #ffffff 45%,
+      #b2b5be 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.aside-copy p {
+  max-width: 525px;
+
+  margin-bottom: 34px;
+
+  color: var(--text-soft);
+
+  font-size: 16px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================
+   LISTA
+   ========================= */
+
+.aside-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 17px;
+
+  list-style: none;
+}
+
+.aside-list li {
+  position: relative;
+
+  padding-left: 28px;
+
+  color: #bec2cb;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  transition:
+    transform var(--transition),
+    color var(--transition);
+}
+
+.aside-list li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 2px;
+  top: 6px;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent-2)
+    );
+
+  box-shadow:
+    0 0 14px rgba(124,108,255,.5);
+}
+
+.aside-list li:hover {
+  color: white;
+
+  transform: translateX(5px);
+}
+
+
+/* =========================
+   VOLVER
+   ========================= */
+
+.back-link {
+  width: fit-content;
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+
+  text-decoration: none;
+
+  transition:
+    color var(--transition),
+    transform var(--transition);
+}
+
+.back-link::before {
+  content: "←";
+
+  display: inline-block;
+
+  margin-right: 8px;
+
+  transition: transform var(--transition);
+}
+
+.back-link:hover {
+  color: white;
+}
+
+.back-link:hover::before {
+  transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   CARD LOGIN
+   ========================================================= */
+
+.auth-card {
+  position: relative;
+
+  padding: 46px;
+
+  border: 1px solid rgba(255,255,255,.09);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(19,22,29,.92),
+      rgba(10,12,17,.88)
+    );
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.40),
+    inset 0 1px 0 rgba(255,255,255,.03);
+
+  overflow: hidden;
+
+  animation: cardIn 700ms 100ms ease both;
+
+  transition:
+    transform 350ms cubic-bezier(.2,.8,.2,1),
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* línea superior */
+.auth-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 14%;
+
+  width: 72%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(158,149,255,.8),
+      rgba(79,140,255,.7),
+      transparent
+    );
+
+  opacity: .65;
+}
+
+
+/* glow interno */
+.auth-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  top: -150px;
+  right: -110px;
+
+  border-radius: 50%;
+
+  background: rgba(124,108,255,.13);
+
+  filter: blur(48px);
+
+  pointer-events: none;
+
+  transition: transform 700ms ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(255,255,255,.14);
+
+  box-shadow:
+    0 45px 105px rgba(0,0,0,.46);
+}
+
+.auth-card:hover::after {
+  transform: translate(-30px, 35px);
+}
+
+
+/* =========================
+   TITULOS CARD
+   ========================= */
+
+.auth-card h2 {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 10px;
+
+  font-size: 30px;
+
+  font-weight: 600;
+
+  letter-spacing: -.045em;
+}
+
+.card-sub {
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 34px;
+
+  color: var(--text-soft);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+#login-form {
+  position: relative;
+
+  z-index: 2;
+}
+
+.field {
+  margin-bottom: 22px;
+}
+
+.field label {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: #d2d5dc;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   LABEL ROW
+   ========================= */
+
+.label-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+/* =========================
+   INPUTS
+   ========================= */
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 14px;
+
+  border: 1px solid rgba(255,255,255,.09);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: rgba(5,7,10,.68);
+
+  color: white;
+
+  font-size: 14px;
+
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover {
+  border-color: rgba(255,255,255,.16);
+
+  background: rgba(7,9,13,.85);
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: rgba(124,108,255,.8);
+
+  background: rgba(7,9,13,.98);
+
+  box-shadow:
+    0 0 0 3px rgba(124,108,255,.10),
+    0 0 30px rgba(124,108,255,.045);
+}
+
+
+/* autofill Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+
+  box-shadow:
+    0 0 0 1000px #090b10 inset;
+}
+
+
+/* =========================
+   PASSWORD
+   ========================= */
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap input {
+  padding-right: 90px;
+}
+
+.toggle-pass {
+  position: absolute;
+
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  border: 0;
+
+  background: transparent;
+
+  color: #848995;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    color var(--transition),
+    transform var(--transition);
+}
+
+.toggle-pass:hover {
+  color: white;
+
+  transform:
+    translateY(-50%)
+    scale(1.04);
+}
+
+
+/* =========================
+   LINKS
+   ========================= */
+
+.text-link {
+  position: relative;
+
+  color: #aaa2ff;
+
+  font-size: 11px;
+
+  text-decoration: none;
+
+  transition: color var(--transition);
+}
+
+.text-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -3px;
+
+  width: 0%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      var(--accent-2)
+    );
+
+  transition: width var(--transition);
+}
+
+.text-link:hover {
+  color: #d0cbff;
+}
+
+.text-link:hover::after {
+  width: 100%;
+}
+
+
+/* =========================
+   ERRORES
+   ========================= */
+
+.field-error {
+  display: block;
+
+  min-height: 15px;
+
+  margin-top: 5px;
+
+  color: var(--danger);
+
+  font-size: 10px;
+}
+
+
+/* =========================
+   CHECKBOX
+   ========================= */
+
+.check {
+  width: fit-content;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 25px;
+
+  color: #9297a3;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.check input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,.16);
+
+  border-radius: 5px;
+
+  background: rgba(255,255,255,.025);
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.check input::before {
+  content: "";
+
+  width: 8px;
+  height: 5px;
+
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+
+  transform:
+    rotate(-45deg)
+    scale(0);
+
+  transition: transform 160ms ease;
+}
+
+.check input:checked {
+  border-color: var(--accent);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent),
+      var(--accent-2)
+    );
+
+  box-shadow:
+    0 0 14px rgba(124,108,255,.25);
+}
+
+.check input:checked::before {
+  transform:
+    rotate(-45deg)
+    scale(1);
+}
+
+
+/* =========================================================
+   BOTÓN INICIAR SESIÓN
+   ========================================================= */
+
+.btn-submit {
+  position: relative;
+
+  width: 100%;
+  height: 51px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border: 1px solid rgba(255,255,255,.13);
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      105deg,
+      #6657ef 0%,
+      #776bff 45%,
+      #4f8cff 100%
+    );
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 12px 32px rgba(86,72,220,.2),
+    inset 0 1px 0 rgba(255,255,255,.18);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    filter var(--transition);
+}
+
+
+/* reflejo */
+.btn-submit::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -130%;
+
+  width: 60%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.25),
+      transparent
+    );
+
+  transform: skewX(-22deg);
+
+  transition: left 650ms ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(1.08);
+
+  box-shadow:
+    0 16px 42px rgba(86,72,220,.28);
+}
+
+.btn-submit:hover::before {
+  left: 145%;
+}
+
+.btn-submit:active {
+  transform: translateY(0) scale(.985);
+}
+
+
+/* =========================
+   SPINNER
+   ========================= */
+
+.spinner {
+  display: none;
+
+  width: 15px;
+  height: 15px;
+
+  border: 2px solid rgba(255,255,255,.35);
+
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: spin .65s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-submit.loading .spinner {
+  display: block;
+}
+
+.btn-submit.loading .btn-label {
+  opacity: .7;
+}
+
+
+/* =========================
+   STATUS
+   ========================= */
+
+.form-status {
+  min-height: 18px;
+
+  margin-top: 11px;
+
+  color: var(--text-soft);
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   CAMBIAR A REGISTRO
+   ========================= */
+
+.card-switch {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 29px;
+
+  padding-top: 24px;
+
+  border-top: 1px solid var(--border);
+
+  color: #777c87;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+  .auth {
+    width: min(700px, calc(100% - 40px));
+
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    padding: 38px 0 60px;
+  }
+
+  .auth-aside {
+    min-height: auto;
+  }
+
+  .aside-copy {
+    margin: 75px 0 25px;
+  }
+
+  .aside-copy h1 {
+    font-size: clamp(3rem, 10vw, 4.7rem);
+  }
+
+  .back-link {
+    margin-top: 20px;
+  }
+
+  .auth-card {
+    padding: 40px;
+  }
+}
+
+
+@media (max-width: 580px) {
+
+  .auth {
+    width: calc(100% - 28px);
+
+    gap: 30px;
+
+    padding-top: 25px;
+  }
+
+  .aside-copy {
+    margin: 58px 0 15px;
+  }
+
+  .aside-copy h1 {
+    font-size: 2.8rem;
+
+    margin-bottom: 20px;
+  }
+
+  .aside-copy p {
+    font-size: 14px;
+  }
+
+  .auth-card {
+    padding: 29px 22px;
+
+    border-radius: 18px;
+  }
+
+  .auth-card h2 {
+    font-size: 26px;
+  }
+
+  .label-row {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 2px;
+  }
+
+  .label-row .text-link {
+    margin-bottom: 8px;
+  }
+
+  .input-wrap input {
+    padding-right: 78px;
+  }
+}
+
+
+/* =========================
+   ACCESIBILIDAD
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}
